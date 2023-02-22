@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+      name: mydaemonset         # DaemonSet name
+spec:
+     template:
+       metadata:
+            name: mydaemon   # containers/pods name
+            labels:
+              name: ds          # label of container/pod
+       spec:
+         containers:
+            - name: mydaemon
+              image: httpd
+
+     selector:
+      matchLabels:
+         name: ds                                       # selector name should be same as label of container
+                                                         # number of replicas to create

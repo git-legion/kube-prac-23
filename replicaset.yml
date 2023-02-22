@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+      name: myreplicaset		# ReplicationController name
+spec:
+     template: 				  
+       metadata:
+            name: myreplica   # containers/pods name
+            labels:
+              name: rs			# label of container/pod
+       spec:
+         containers:
+            - name: myreplica
+              image: nginx
+
+     selector:
+      matchLabels:
+         name: rs						# selector name should be same as label of container
+     replicas: 3     					 # number of replicas to create
